@@ -39,7 +39,7 @@ These examples will get you started with the SQLizer class and perform a couple 
 
 ### Run the RunSQL method of the sqlizer class on the array.
 
-    $result = $sqlizer->RUnSQL($sql);
+    $result = $sqlizer->RunSQL($sql);
     
 
 ### Output the result of the query or use it elsewhere.
