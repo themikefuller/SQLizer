@@ -11,7 +11,7 @@ $password = 'password';
 $name     = 'sqlizer';
 
 // Load the sqlizer class
-require_once 'sqlizer.php';
+require_once '../src/sqlizer.php';
 
 // Connect to the database
 $sqlizer = new SQLizer($host,$port,$user,$password,$name);
@@ -33,7 +33,7 @@ $sql['statement'] = "create table if not exists $table_name (
                      )ENGINE=InnoDB";
 
 // Run the SQL command.
-$sqlizer->RunSQL($sql);
+$sqlizer->RuNSQL($sql);
 
 
 // --------------------------
@@ -96,7 +96,6 @@ unset($data);
 unset($sql);
 
 
-
 // TEST 4 - Delete Data
 // Delete the row that was just created.
 $sql['statement'] = "delete from $table_name where id = :id";
@@ -106,9 +105,6 @@ unset($sql);
 
 $sql['statement'] = "show tables";
 print_r($sqlizer->RunSQL($sql));
-
-
-
 
 // TEST 5 - Delete Table
 // Delete the table
