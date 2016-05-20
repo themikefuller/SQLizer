@@ -7,6 +7,9 @@ class SQLizer {
     // A message for humans indicating the status of the SQLizer.
     public $status;
 
+    // Connection information
+    public $message;
+
     // The constructor attempts to the establish a connection when the SQLizer object is created.
     public function __construct($db_host,$db_port,$db_user,$db_pass,$db_name) {
         // Attempt to establish a connection with the database.
@@ -26,9 +29,11 @@ class SQLizer {
         // If the settings are invalid, null properties, set and echo error status.
         if (!$conn) {
             $this->status = false;
+            $this->message = "Failed to make a connection to the database. Check database configuration.";
         // If the settings are valid, set the properties and maintain connection.
         } else {
             $this->status = true;
+            $this->message = "Connected to " . $db_name . " at " . $db_host . " as " . $db_user;
         }
         return $conn;
     }    

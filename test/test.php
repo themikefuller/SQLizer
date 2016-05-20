@@ -114,4 +114,5 @@ unset($sql);
 
 // Close database connection
 // In this case unnecessary because the script ends here anyway.
+var_dump($sqlizer);
 unset($sqlizer);
