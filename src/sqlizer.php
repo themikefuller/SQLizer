@@ -10,6 +10,9 @@ class SQLizer {
     // Connection information
     public $message;
 
+    // Name of the database
+    public $database;
+
     // The constructor attempts to the establish a connection when the SQLizer object is created.
     public function __construct($db_host,$db_port,$db_user,$db_pass,$db_name) {
         // Attempt to establish a connection with the database.
@@ -34,6 +37,7 @@ class SQLizer {
         } else {
             $this->status = true;
             $this->message = "Connected to " . $db_name . " at " . $db_host . " as " . $db_user;
+            $this->database = $db_name;
         }
         return $conn;
     }    
