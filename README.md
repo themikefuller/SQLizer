@@ -78,3 +78,10 @@ When a query returns no rows, the RunSQL method will return a boolean false. Thi
     } else {
         echo 'No such user.';
     }
+
+
+## sqlFactory
+
+A sqlFactory has been added to the project to handle multiple sqlizer instances. See test/testFactory.php for an example.
+
+Additional documentation will be provided in time.
