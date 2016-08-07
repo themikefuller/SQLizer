@@ -16,21 +16,21 @@ class SQLizer {
     // The constructor attempts to the establish a connection when the SQLizer object is created.
     public function __construct($db_host,$db_port,$db_user,$db_pass,$db_name) {
         // Attempt to establish a connection with the database.
-        $this->conn = $this->Connect($db_host,$db_port,$db_user,$db_pass,$db_name);
+        $this->Connect($db_host,$db_port,$db_user,$db_pass,$db_name);
     }
 
     private function Connect($db_host,$db_port,$db_user,$db_pass,$db_name) {
        // Try to establish a connection to the database.
        try{
-            $conn = new PDO("mysql:host=$db_host;port=$db_port;dbname=$db_name", $db_user, $db_pass);
-            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $this->conn = new PDO("mysql:host=$db_host;port=$db_port;dbname=$db_name", $db_user, $db_pass);
+            $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         }
         catch(PDOException $ex){
             // Set the connection to false if the connection attempt failed.
-            $conn = false;
+            $this->conn = false;
         }
         // If the settings are invalid, null properties, set and echo error status.
-        if (!$conn) {
+        if (!$this->conn) {
             $this->status = false;
             $this->message = "Failed to make a connection to the database. Check database configuration.";
         // If the settings are valid, set the properties and maintain connection.
@@ -39,7 +39,6 @@ class SQLizer {
             $this->message = "Connected to " . $db_name . " at " . $db_host . " as " . $db_user;
             $this->database = $db_name;
         }
-        return $conn;
     }    
 
     // Run a SQL statement
